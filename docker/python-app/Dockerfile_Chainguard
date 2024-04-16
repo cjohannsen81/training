@@ -1,0 +1,14 @@
+# Stage 1: Build
+FROM cgr.dev/chainguard/python:latest-dev as build
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Stage 2: Runtime
+FROM cgr.dev/chainguard/python:latest as runtime
+
+WORKDIR /app
+COPY --from=build /app /app
+
+CMD ["python", "app.py"]
