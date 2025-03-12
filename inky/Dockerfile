@@ -1,4 +1,5 @@
-FROM cgr.dev/chainguard/python:latest-dev as builder
+# Build
+FROM cgr.dev/chainguard/python:latest-dev AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -7,11 +8,17 @@ ENV PATH="/inky/venv/bin:$PATH"
 
 WORKDIR /inky
 
+USER root
+
+RUN apk update && apk add curl
+RUN curl --version
+
 RUN python -m venv /inky/venv
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Runtime
 FROM cgr.dev/chainguard/python:latest
 
 WORKDIR /inky
