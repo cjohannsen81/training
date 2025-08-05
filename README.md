@@ -1,8 +1,20 @@
-# training
+# Simple Chainguard migration training
 
-\
-#python:3.9-dev\
-python:3.9-dev@sha256:e19e4c4a78f849af717b08cb62f91e4c436287ee4ae0f5139db73e773b7224d8\
-\
-#python:3.9\
-python:3.9@sha256:4ba1c55042f9845636e8700f23d3b8e57f9934b5bdea1ec278a27329117c55e2
+You need:
+  - Docker
+  - Git
+  - Internet
+  - Grype
+
+Clone the training repository: 
+git clone https://github.com/cjohannsen81/training.git 
+
+The repository contains different folders:
+  Simple - our first app
+  Inky - A sample python app
+  Not-Inky - Another sample application
+
+1. Enter the directory
+2. Build the image: `docker build . -t image-name`
+3. Run the image: `docker run -it image-name`
+4. Scan the image: `grype docker.io/library/image-name`
