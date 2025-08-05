@@ -10,9 +10,6 @@ WORKDIR /inky
 
 USER root
 
-RUN apk update && apk add curl
-RUN curl --version
-
 RUN python -m venv /inky/venv
 COPY requirements.txt .
 
