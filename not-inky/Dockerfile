@@ -8,9 +8,6 @@ ENV PATH="/not-inky/venv/bin:$PATH"
 
 WORKDIR /not-inky
 
-RUN apt update && apt install curl
-RUN curl --version
-
 RUN python -m venv /not-inky/venv
 COPY requirements.txt .
 
