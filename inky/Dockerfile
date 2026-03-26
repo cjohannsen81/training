@@ -1,5 +1,5 @@
 # Build
-FROM cgr.dev/chainguard/python:3.13-dev AS builder
+FROM cgr.dev/chainguard/python:latest-dev AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -15,11 +15,10 @@ RUN curl --version
 
 RUN python -m venv /inky/venv
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Runtime
-FROM cgr.dev/chainguard/python:3.13
+FROM cgr.dev/chainguard/python:latest
 
 WORKDIR /inky
 
