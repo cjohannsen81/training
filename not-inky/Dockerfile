@@ -13,7 +13,6 @@ RUN curl --version
 
 RUN python -m venv /not-inky/venv
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Runtime
