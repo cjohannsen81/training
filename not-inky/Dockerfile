@@ -1,5 +1,5 @@
 # Build
-FROM python:latest-slim AS builder
+FROM python:3.14-slim AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,7 +16,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Runtime
-FROM python:latest-slim
+FROM python:3.14-slim
 
 WORKDIR /not-inky
 
