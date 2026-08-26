@@ -1,5 +1,5 @@
 # Build
-FROM python:3.14-slim AS builder
+FROM python:slim AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -8,15 +8,12 @@ ENV PATH="/not-inky/venv/bin:$PATH"
 
 WORKDIR /not-inky
 
-RUN apt update && apt install -y curl
-RUN curl --version
-
 RUN python -m venv /not-inky/venv
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Runtime
-FROM python:3.14-slim
+FROM python:slim
 
 WORKDIR /not-inky
 
